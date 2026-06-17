@@ -1,5 +1,5 @@
 // src/components/Navbar.jsx
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { 
   Menu, X, ChevronDown, 
@@ -12,6 +12,8 @@ import {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
+  const dropdownRef = useRef(null)
+  const mobileMenuRef = useRef(null)
 
   // Dropdown data
   const products = [
@@ -63,6 +65,72 @@ const Navbar = () => {
     }
   }
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Check if click is outside dropdown
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setActiveDropdown(null)
+      }
+      
+      // Check if click is outside mobile menu
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+        // Only close mobile menu if it's open and clicked outside
+        if (isOpen) {
+          // Check if the click was on the menu button itself
+          const menuButton = document.querySelector('.menu-toggle-button')
+          if (!menuButton || !menuButton.contains(event.target)) {
+            setIsOpen(false)
+          }
+        }
+      }
+    }
+
+    // Add event listener
+    document.addEventListener('mousedown', handleClickOutside)
+    
+    // Cleanup
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isOpen]) // Re-run when isOpen changes
+
+  // Close dropdown when pressing Escape key
+  useEffect(() => {
+    const handleEscapeKey = (event) => {
+      if (event.key === 'Escape') {
+        setActiveDropdown(null)
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('keydown', handleEscapeKey)
+    
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKey)
+    }
+  }, [])
+
+  // Close mobile menu when window resizes to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsOpen(false)
+        setActiveDropdown(null)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  const closeMobileMenu = () => {
+    setIsOpen(false)
+  }
+
   return (
     <nav className="bg-white shadow-sm fixed w-full z-50 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,8 +143,8 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-1">
+          {/* Desktop Menu - Wrapped in ref for click outside detection */}
+          <div ref={dropdownRef} className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => (
               <div key={item.key} className="relative group">
                 <button
@@ -96,6 +164,7 @@ const Navbar = () => {
                           key={index}
                           href="#"
                           className="flex items-start gap-3 px-4 py-3 hover:bg-blue-50 transition duration-150 group/item"
+                          onClick={() => setActiveDropdown(null)} // Close dropdown on item click
                         >
                           <div className="text-blue-600 mt-0.5">
                             {subItem.icon}
@@ -140,35 +209,28 @@ const Navbar = () => {
               to="/demo" 
               className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium px-6 py-2.5 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-0.5"
             >
-              {/* 3D Shine Effect */}
               <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -skew-x-12 group-hover:translate-x-full transition-transform duration-700"></span>
-              
-              {/* Button Content */}
               <span className="relative flex items-center gap-2">
                 <PlayCircle className="w-5 h-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
                 <span>Get Demo</span>
               </span>
-
-              {/* 3D Depth Effect */}
               <span className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg"></span>
-              
-              {/* Glow Effect */}
               <span className="absolute -inset-1 bg-blue-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></span>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Added class for reference */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-gray-700 hover:text-blue-600 p-2"
+            className="lg:hidden text-gray-700 hover:text-blue-600 p-2 menu-toggle-button"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Wrapped in ref for click outside detection */}
         {isOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-100 max-h-[80vh] overflow-y-auto">
+          <div ref={mobileMenuRef} className="lg:hidden py-4 border-t border-gray-100 max-h-[80vh] overflow-y-auto">
             {/* Mobile Navigation Items */}
             {navItems.map((item) => (
               <div key={item.key} className="border-b border-gray-50 last:border-0">
@@ -187,6 +249,10 @@ const Navbar = () => {
                         key={index}
                         href="#"
                         className="flex items-center gap-3 py-2 px-2 hover:bg-blue-50 rounded-md transition"
+                        onClick={() => {
+                          setActiveDropdown(null)
+                          closeMobileMenu()
+                        }}
                       >
                         <span className="text-blue-600">{subItem.icon}</span>
                         <div>
@@ -200,11 +266,12 @@ const Navbar = () => {
               </div>
             ))}
             
-            {/* Mobile Action Buttons with 3D effects */}
+            {/* Mobile Action Buttons */}
             <div className="mt-4 space-y-3">
               <Link 
                 to="/login" 
                 className="group flex items-center justify-center gap-2 text-gray-700 hover:text-blue-600 font-medium py-2 border border-gray-200 rounded-lg transition-all duration-300 hover:border-blue-400"
+                onClick={closeMobileMenu}
               >
                 <LogIn className="w-5 h-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-10deg]" />
                 Login
@@ -212,6 +279,7 @@ const Navbar = () => {
               <Link 
                 to="/demo" 
                 className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium py-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-2"
+                onClick={closeMobileMenu}
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -skew-x-12 group-hover:translate-x-full transition-transform duration-700"></span>
                 <PlayCircle className="w-5 h-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
@@ -223,7 +291,7 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* CSS for animations and 3D effects */}
+      {/* CSS for animations */}
       <style>{`
         @keyframes fadeIn {
           from {
@@ -237,30 +305,6 @@ const Navbar = () => {
         }
         .animate-fadeIn {
           animation: fadeIn 0.2s ease-out;
-        }
-
-        /* 3D Button Effects */
-        .btn-3d {
-          perspective: 800px;
-          transform-style: preserve-3d;
-        }
-
-        .btn-3d:hover {
-          transform: translateZ(10px) rotateX(2deg);
-        }
-
-        /* Shine animation */
-        @keyframes shine {
-          0% {
-            transform: translateX(-100%) skewX(-12deg);
-          }
-          100% {
-            transform: translateX(100%) skewX(-12deg);
-          }
-        }
-
-        .shine-animate {
-          animation: shine 1.5s ease-in-out infinite;
         }
       `}</style>
     </nav>
