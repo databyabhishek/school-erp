@@ -22,11 +22,24 @@ const Login = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50/30 to-purple-50 flex items-center justify-center p-4 py-20">
       <div className="max-w-6xl w-full grid lg:grid-cols-2 gap-8 items-start">
         
+        {/* Back to Home - OUTSIDE THE BOX - EXACTLY LIKE DEMO */}
+        <div className="lg:col-span-2 mb-2">
+          <Link 
+            to="/" 
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors group"
+          >
+            <ArrowRight className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
+            <span>Back to Home</span>
+          </Link>
+        </div>
+
         {/* Left Side - Login Form */}
         <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 relative overflow-hidden">
+          {/* Decorative elements */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400/10 to-indigo-400/10 rounded-full blur-2xl"></div>
           <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-purple-400/10 to-pink-400/10 rounded-full blur-2xl"></div>
           
+          {/* Header */}
           <div className="relative">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-2xl">🏫</span>
@@ -37,12 +50,14 @@ const Login = () => {
             </p>
           </div>
 
+          {/* Welcome Message */}
           <div className="relative mb-8">
             <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
               Welcome Back! <span className="text-3xl">👋</span>
             </h1>
           </div>
 
+          {/* Role Selection */}
           <div className="relative mb-8">
             <p className="text-sm font-medium text-gray-700 mb-3">You're</p>
             <div className="grid grid-cols-3 gap-3">
@@ -74,7 +89,9 @@ const Login = () => {
             </div>
           </div>
 
+          {/* Login Form */}
           <form className="relative space-y-5">
+            {/* Username Field */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">
                 Your Username
@@ -91,6 +108,7 @@ const Login = () => {
               </div>
             </div>
 
+            {/* Password Field */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">
                 Your Password
@@ -114,6 +132,7 @@ const Login = () => {
               </div>
             </div>
 
+            {/* Remember Me & Forgot Password */}
             <div className="flex items-center justify-between">
               <label className="flex items-center gap-2 cursor-pointer group">
                 <div className="relative">
@@ -142,6 +161,7 @@ const Login = () => {
               </a>
             </div>
 
+            {/* Login Button */}
             <button
               type="submit"
               className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3.5 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
@@ -149,8 +169,18 @@ const Login = () => {
               <span>Login</span>
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
+
+            {/* Demo Link */}
+            <div className="text-center pt-2">
+              <p className="text-sm text-gray-600">
+                Want to try Shiksha.ai?{' '}
+                <Link to="/demo" className="text-blue-600 hover:text-blue-700 font-semibold hover:underline transition">
+                  Request a Demo
+                </Link>
+              </p>
+            </div>
           </form>
-          </div>
+        </div>
 
         {/* Right Side - Info Panel */}
         <div className="hidden lg:block">
@@ -173,6 +203,7 @@ const Login = () => {
                 </p>
               </div>
 
+              {/* Features List */}
               <div className="space-y-4 mt-8">
                 <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4">
                   <div className="bg-white/20 rounded-lg p-2">
@@ -203,6 +234,7 @@ const Login = () => {
                 </div>
               </div>
 
+              {/* Stats */}
               <div className="grid grid-cols-2 gap-4 mt-8">
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
                   <div className="text-2xl font-bold">4.6</div>
@@ -218,6 +250,7 @@ const Login = () => {
         </div>
       </div>
 
+      {/* Decorative floating elements */}
       <div className="fixed top-20 left-10 w-20 h-20 bg-blue-400/10 rounded-full blur-2xl animate-pulse"></div>
       <div className="fixed bottom-20 right-10 w-32 h-32 bg-purple-400/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
     </div>
