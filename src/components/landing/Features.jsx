@@ -1,5 +1,5 @@
-// src/components/Features.jsx
-import { Shield, Cpu, TrendingUp, Lock, Globe, Zap } from 'lucide-react'
+// src/components/landing/Features.jsx
+import { Shield, Cpu, TrendingUp, Lock, Globe } from 'lucide-react'
 
 const Features = () => {
   const features = [
@@ -48,7 +48,6 @@ const Features = () => {
   return (
     <section id="features" className="py-16 md:py-24 bg-white">
       <div className="container-custom">
-        {/* Feature Cards */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           {features.map((feature, index) => (
             <div key={index} className="bg-gray-50 rounded-xl p-8 text-center hover:shadow-lg transition duration-300">
@@ -63,13 +62,12 @@ const Features = () => {
           ))}
         </div>
 
-        {/* Why Choose Us */}
         <div className="mb-20">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Why Choose Us?
           </h2>
           <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-            eSkooly is a revolution in education management
+            Shiksha.ai is a revolution in education management
           </p>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -85,7 +83,6 @@ const Features = () => {
           </div>
         </div>
 
-        {/* Security Section */}
         <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 md:p-12 text-white">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>

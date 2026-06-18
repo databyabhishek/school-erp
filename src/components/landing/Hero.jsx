@@ -1,4 +1,4 @@
-// src/components/Hero.jsx
+// src/components/landing/Hero.jsx
 import { Link } from 'react-router-dom'
 import { Star, Shield, Users, Zap } from 'lucide-react'
 
@@ -7,7 +7,6 @@ const Hero = () => {
     <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
       <div className="container-custom">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
           <div>
             <div className="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-medium mb-6">
               <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
@@ -19,11 +18,11 @@ const Hero = () => {
             </h1>
             
             <p className="text-xl text-gray-600 mb-8">
-              You can now manage your school, college, or any educational institution seamlessly with eSkooly — completely free for life, with no limitations.
+              You can now manage your school, college, or any educational institution seamlessly with Shiksha.ai — completely free for life, with no limitations.
             </p>
             
             <div className="flex flex-wrap gap-4">
-              <Link to="/login" className="btn-primary">
+              <Link to="/demo" className="btn-primary">
                 Get Started Today
               </Link>
               <a href="#features" className="btn-outline">
@@ -47,7 +46,6 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Right Content - Stats Cards */}
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
               <p className="text-sm text-gray-500">Revenue</p>

@@ -1,4 +1,4 @@
-// src/pages/Login.jsx
+// src/pages/auth/Login/Login.jsx
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { 
@@ -24,11 +24,9 @@ const Login = () => {
         
         {/* Left Side - Login Form */}
         <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 relative overflow-hidden">
-          {/* Decorative elements */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400/10 to-indigo-400/10 rounded-full blur-2xl"></div>
           <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-purple-400/10 to-pink-400/10 rounded-full blur-2xl"></div>
           
-          {/* Header */}
           <div className="relative">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-2xl">🏫</span>
@@ -39,14 +37,12 @@ const Login = () => {
             </p>
           </div>
 
-          {/* Welcome Message */}
           <div className="relative mb-8">
             <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
               Welcome Back! <span className="text-3xl">👋</span>
             </h1>
           </div>
 
-          {/* Role Selection */}
           <div className="relative mb-8">
             <p className="text-sm font-medium text-gray-700 mb-3">You're</p>
             <div className="grid grid-cols-3 gap-3">
@@ -62,15 +58,10 @@ const Login = () => {
                     }
                   `}
                 >
-                  <span className={`
-                    ${selectedRole === role.id ? 'text-blue-600' : 'text-gray-600'}
-                  `}>
+                  <span className={`${selectedRole === role.id ? 'text-blue-600' : 'text-gray-600'}`}>
                     {role.icon}
                   </span>
-                  <span className={`
-                    text-xs font-medium
-                    ${selectedRole === role.id ? 'text-blue-600' : 'text-gray-700'}
-                  `}>
+                  <span className={`text-xs font-medium ${selectedRole === role.id ? 'text-blue-600' : 'text-gray-700'}`}>
                     {role.label}
                   </span>
                   {selectedRole === role.id && (
@@ -83,9 +74,7 @@ const Login = () => {
             </div>
           </div>
 
-          {/* Login Form */}
           <form className="relative space-y-5">
-            {/* Username Field */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">
                 Your Username
@@ -102,7 +91,6 @@ const Login = () => {
               </div>
             </div>
 
-            {/* Password Field */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">
                 Your Password
@@ -126,7 +114,6 @@ const Login = () => {
               </div>
             </div>
 
-            {/* Remember Me & Forgot Password */}
             <div className="flex items-center justify-between">
               <label className="flex items-center gap-2 cursor-pointer group">
                 <div className="relative">
@@ -155,7 +142,6 @@ const Login = () => {
               </a>
             </div>
 
-            {/* Login Button */}
             <button
               type="submit"
               className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3.5 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
@@ -169,7 +155,6 @@ const Login = () => {
         {/* Right Side - Info Panel */}
         <div className="hidden lg:block">
           <div className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-3xl shadow-2xl p-10 text-white h-full relative overflow-hidden">
-            {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-400/20 rounded-full blur-3xl"></div>
             
@@ -188,7 +173,6 @@ const Login = () => {
                 </p>
               </div>
 
-              {/* Features List */}
               <div className="space-y-4 mt-8">
                 <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4">
                   <div className="bg-white/20 rounded-lg p-2">
@@ -219,7 +203,6 @@ const Login = () => {
                 </div>
               </div>
 
-              {/* Stats */}
               <div className="grid grid-cols-2 gap-4 mt-8">
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
                   <div className="text-2xl font-bold">4.6</div>
@@ -235,7 +218,6 @@ const Login = () => {
         </div>
       </div>
 
-      {/* Decorative floating elements */}
       <div className="fixed top-20 left-10 w-20 h-20 bg-blue-400/10 rounded-full blur-2xl animate-pulse"></div>
       <div className="fixed bottom-20 right-10 w-32 h-32 bg-purple-400/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
     </div>

@@ -1,10 +1,9 @@
-// src/components/Footer.jsx
+// src/components/layout/Footer/Footer.jsx
 import { Link } from 'react-router-dom'
 import { 
   Facebook, Twitter, Linkedin, Youtube, Instagram, 
   Mail, Phone, MapPin, Globe, Award, Star,
-  ChevronRight, Smartphone, Laptop,
-  ExternalLink, Shield,
+  ChevronRight, ExternalLink, Shield,
   PlayCircle, Apple, Monitor, Chrome
 } from 'lucide-react'
 
@@ -42,12 +41,10 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-gray-900 text-gray-300">
-      {/* Top gradient line */}
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
         
-        {/* Main Grid */}
         <div className="grid lg:grid-cols-4 gap-8 mb-10">
           
           {/* Brand Column */}
@@ -55,7 +52,7 @@ const Footer = () => {
             <div className="flex items-center gap-2 mb-3">
               <span className="text-2xl">🏫</span>
               <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                eskooly
+                Shiksha.ai
               </span>
             </div>
             
@@ -63,7 +60,6 @@ const Footer = () => {
               The world's #1 free online school management software, empowering schools worldwide to manage everything digitally.
             </p>
 
-            {/* Trust Badges */}
             <div className="flex flex-wrap gap-2 mb-4">
               <div className="flex items-center gap-1 bg-white/5 rounded-full px-2.5 py-1 border border-white/5">
                 <Award className="w-3.5 h-3.5 text-yellow-400" />
@@ -79,7 +75,6 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Social Icons */}
             <div className="flex gap-1.5">
               {socialIcons.map((social, index) => (
                 <a
@@ -173,8 +168,8 @@ const Footer = () => {
             </div>
             <div className="flex items-center gap-3 group p-3 rounded-lg hover:bg-white/5 transition-colors duration-300">
               <Mail className="w-4 h-4 text-rose-400 flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
-              <a href="mailto:support@eskooly.com" className="text-sm text-gray-400 group-hover:text-white transition-colors">
-                support@eskooly.com
+              <a href="mailto:support@shiksha.ai" className="text-sm text-gray-400 group-hover:text-white transition-colors">
+                support@shiksha.ai
               </a>
             </div>
             <div className="flex items-center gap-3 group p-3 rounded-lg hover:bg-white/5 transition-colors duration-300">
@@ -189,7 +184,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-white/10 pt-4 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-xs text-gray-500">
-            &copy; {currentYear} eSkooly. All rights reserved.
+            &copy; {currentYear} Shiksha.ai. All rights reserved.
           </p>
           
           <div className="flex flex-wrap items-center gap-3 text-xs">
@@ -213,7 +208,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Back to Top Button - Clean Version */}
+      {/* Back to Top Button */}
       <button 
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className="fixed bottom-6 right-6 group"

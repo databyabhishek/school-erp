@@ -1,4 +1,4 @@
-// src/components/Navbar.jsx
+// src/components/layout/Navbar/Navbar.jsx
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { 
@@ -68,16 +68,12 @@ const Navbar = () => {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Check if click is outside dropdown
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setActiveDropdown(null)
       }
       
-      // Check if click is outside mobile menu
       if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
-        // Only close mobile menu if it's open and clicked outside
         if (isOpen) {
-          // Check if the click was on the menu button itself
           const menuButton = document.querySelector('.menu-toggle-button')
           if (!menuButton || !menuButton.contains(event.target)) {
             setIsOpen(false)
@@ -86,14 +82,12 @@ const Navbar = () => {
       }
     }
 
-    // Add event listener
     document.addEventListener('mousedown', handleClickOutside)
     
-    // Cleanup
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [isOpen]) // Re-run when isOpen changes
+  }, [isOpen])
 
   // Close dropdown when pressing Escape key
   useEffect(() => {
@@ -143,7 +137,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Desktop Menu - Wrapped in ref for click outside detection */}
+          {/* Desktop Menu */}
           <div ref={dropdownRef} className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => (
               <div key={item.key} className="relative group">
@@ -155,7 +149,6 @@ const Navbar = () => {
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === item.key ? 'rotate-180' : ''}`} />
                 </button>
                 
-                {/* Dropdown Menu */}
                 {activeDropdown === item.key && (
                   <div className="absolute top-full left-0 mt-1 w-72 bg-white rounded-xl shadow-xl border border-gray-100 py-2 animate-fadeIn">
                     <div className="grid grid-cols-1 divide-y divide-gray-50">
@@ -164,7 +157,7 @@ const Navbar = () => {
                           key={index}
                           href="#"
                           className="flex items-start gap-3 px-4 py-3 hover:bg-blue-50 transition duration-150 group/item"
-                          onClick={() => setActiveDropdown(null)} // Close dropdown on item click
+                          onClick={() => setActiveDropdown(null)}
                         >
                           <div className="text-blue-600 mt-0.5">
                             {subItem.icon}
@@ -187,9 +180,8 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Right side buttons with 3D effects */}
+          {/* Right side buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            {/* Login Button with 3D effect */}
             <Link 
               to="/login" 
               className="group relative flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 font-medium text-sm transition-all duration-300"
@@ -204,7 +196,6 @@ const Navbar = () => {
               </span>
             </Link>
 
-            {/* Get Demo Button with 3D effect */}
             <Link 
               to="/demo" 
               className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium px-6 py-2.5 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-0.5"
@@ -219,7 +210,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button - Added class for reference */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden text-gray-700 hover:text-blue-600 p-2 menu-toggle-button"
@@ -228,10 +219,9 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Menu - Wrapped in ref for click outside detection */}
+        {/* Mobile Menu */}
         {isOpen && (
           <div ref={mobileMenuRef} className="lg:hidden py-4 border-t border-gray-100 max-h-[80vh] overflow-y-auto">
-            {/* Mobile Navigation Items */}
             {navItems.map((item) => (
               <div key={item.key} className="border-b border-gray-50 last:border-0">
                 <button
@@ -266,7 +256,6 @@ const Navbar = () => {
               </div>
             ))}
             
-            {/* Mobile Action Buttons */}
             <div className="mt-4 space-y-3">
               <Link 
                 to="/login" 
@@ -291,7 +280,6 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* CSS for animations */}
       <style>{`
         @keyframes fadeIn {
           from {

@@ -1,4 +1,4 @@
-// src/components/Stats.jsx
+// src/components/landing/Stats.jsx
 import { Users, Building2, Star, Award } from 'lucide-react'
 
 const Stats = () => {

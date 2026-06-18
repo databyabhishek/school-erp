@@ -1,4 +1,4 @@
-// src/components/Testimonials.jsx
+// src/components/landing/Testimonials.jsx
 import { Star } from 'lucide-react'
 
 const Testimonials = () => {
@@ -6,17 +6,17 @@ const Testimonials = () => {
     {
       name: 'Maheshwari Lall',
       role: 'School Head | Redhill School Sandton, SA',
-      content: 'eSkooly has transformed our administrative processes, making communication and resource management seamless. The platform\'s user-friendly interface has been a game-changer for our staff and parents.'
+      content: 'Shiksha.ai has transformed our administrative processes, making communication and resource management seamless. The platform\'s user-friendly interface has been a game-changer for our staff and parents.'
     },
     {
       name: 'Jane Lunnon',
       role: 'School Head | Alleyn\'s School London, UK',
-      content: 'eSkooly\'s robust features have streamlined our school operations, from attendance tracking to parent engagement. It\'s reliable, intuitive, and has significantly enhanced our efficiency.'
+      content: 'Shiksha.ai\'s robust features have streamlined our school operations, from attendance tracking to parent engagement. It\'s reliable, intuitive, and has significantly enhanced our efficiency.'
     },
     {
       name: 'Jamie Flegg',
       role: 'Class Teacher | Wellington College International School Bangkok, TH',
-      content: 'Using eSkooly has made classroom management so much easier, with instant access to student data and teaching resources. It\'s a fantastic tool that saves time and boosts productivity.'
+      content: 'Using Shiksha.ai has made classroom management so much easier, with instant access to student data and teaching resources. It\'s a fantastic tool that saves time and boosts productivity.'
     }
   ]
 

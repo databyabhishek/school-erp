@@ -1,4 +1,4 @@
-// src/components/Pricing.jsx
+// src/components/landing/Pricing.jsx
 import { Link } from 'react-router-dom'
 import { Check } from 'lucide-react'
 
@@ -22,7 +22,7 @@ const Pricing = () => {
             Ready to Transform Your Institution?
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            With eSkooly, you're not just managing a school — you're building a brighter future for education.
+            With Shiksha.ai, you're not just managing a school — you're building a brighter future for education.
           </p>
         </div>
         
@@ -48,7 +48,7 @@ const Pricing = () => {
                 ))}
               </ul>
               
-              <Link to="/login" className="btn-primary block text-center">
+              <Link to="/demo" className="btn-primary block text-center">
                 Get Started Today
               </Link>
               

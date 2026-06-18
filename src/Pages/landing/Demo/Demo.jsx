@@ -1,4 +1,4 @@
-// src/pages/Demo.jsx
+// src/pages/landing/Demo/Demo.jsx
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { 
@@ -31,11 +31,9 @@ const Demo = () => {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false)
       setIsSuccess(true)
-      // Reset form after 3 seconds
       setTimeout(() => {
         setIsSuccess(false)
         setFormData({
@@ -114,7 +112,7 @@ const Demo = () => {
       label: 'Specify Your Needs', 
       icon: <FileText className="w-5 h-5" />,
       type: 'textarea',
-      placeholder: 'Tell us what you need from eSkooly...',
+      placeholder: 'Tell us what you need from Shiksha.ai...',
       required: false,
       rows: 4
     }
@@ -124,7 +122,6 @@ const Demo = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50/30 to-purple-50 py-20 px-4">
       <div className="max-w-6xl mx-auto">
         
-        {/* Back to Home */}
         <div className="mb-6">
           <Link to="/" className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors group">
             <ArrowRight className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
@@ -133,10 +130,8 @@ const Demo = () => {
         </div>
 
         <div className="grid lg:grid-cols-5 gap-8">
-          {/* Left Side - Form */}
           <div className="lg:col-span-3">
             <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
-              {/* Header */}
               <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-8 py-6 text-white">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
@@ -154,7 +149,6 @@ const Demo = () => {
                 </div>
               </div>
 
-              {/* Form */}
               <form onSubmit={handleSubmit} className="p-8">
                 <div className="grid md:grid-cols-2 gap-6">
                   {inputFields.map((field) => (
@@ -192,7 +186,6 @@ const Demo = () => {
                   ))}
                 </div>
 
-                {/* reCAPTCHA Placeholder */}
                 <div className="mt-6 p-4 bg-gray-50 rounded-xl border border-gray-200 flex items-center gap-4">
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 border-2 border-blue-500 rounded flex items-center justify-center cursor-pointer hover:bg-blue-50 transition">
@@ -206,7 +199,6 @@ const Demo = () => {
                   </div>
                 </div>
 
-                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isSubmitting || isSuccess}
@@ -243,16 +235,13 @@ const Demo = () => {
             </div>
           </div>
 
-          {/* Right Side - Info Panel */}
           <div className="lg:col-span-2">
             <div className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-3xl shadow-2xl p-8 text-white h-full relative overflow-hidden">
-              {/* Decorative Elements */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-400/20 rounded-full blur-3xl"></div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-2xl"></div>
 
               <div className="relative">
-                {/* Icon */}
                 <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm shadow-lg">
                   <Calendar className="w-10 h-10" />
                 </div>
@@ -261,10 +250,9 @@ const Demo = () => {
                   Why Schedule a Demo?
                 </h2>
                 <p className="text-blue-100 text-sm leading-relaxed mb-6">
-                  Get a personalized walkthrough of eSkooly's powerful features and see how it can transform your school management.
+                  Get a personalized walkthrough of Shiksha.ai's powerful features and see how it can transform your school management.
                 </p>
 
-                {/* Benefits */}
                 <div className="space-y-4 mb-8">
                   <div className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/10">
                     <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -295,7 +283,6 @@ const Demo = () => {
                   </div>
                 </div>
 
-                {/* Stats */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
                     <div className="text-2xl font-bold">125K+</div>
@@ -307,10 +294,9 @@ const Demo = () => {
                   </div>
                 </div>
 
-                {/* Contact Info */}
                 <div className="mt-6 pt-6 border-t border-white/20">
                   <p className="text-xs text-blue-100 text-center">
-                    📞 +44 (740) 407 4252 &nbsp;|&nbsp; 📧 support@eskooly.com
+                    📞 +44 (740) 407 4252 &nbsp;|&nbsp; 📧 support@shiksha.ai
                   </p>
                 </div>
               </div>
@@ -319,7 +305,6 @@ const Demo = () => {
         </div>
       </div>
 
-      {/* CSS Animations */}
       <style>{`
         @keyframes fadeIn {
           from {
